@@ -1,0 +1,23 @@
+DATA:
+  DATASET: 'CISOL'
+  ROOT: './data/cisol_TD-TSR/TD-TSR'
+
+MODEL:
+  NUM_CLASSES: 6
+
+MISC:
+  RUN_NAME: 'CISOL_Default_run'
+  RESULTS_CSV: './results' #'/kaggle/working/repository_content/results'
+  SAVE_MODEL_PATH: './saved_models' #'/kaggle/working/repository_content/saved_models'
+
+TRAIN:
+  BASE_LR: 0.001
+  MILESTONES: [10, 20]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  NUM_EPOCHS: 2
+  EARLY_STOPPING: False
+
+AUGMENTATION:
+  HORIZONTAL_FLIP_PROB: 0.5
+  ROTATION_DEGREES: 10
