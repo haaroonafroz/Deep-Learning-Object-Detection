@@ -79,7 +79,7 @@ def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     if backbone_name == 'resnet50':
         weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT
         backbone = torchvision.models.resnet50(pretrained = pretrained)#(weights=weights if pretrained else None)
-        # backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
+        backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
         backbone.out_channels = 2048
         
     elif backbone_name == 'resnet101':
@@ -96,8 +96,12 @@ def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     else:
         raise ValueError(f"Backbone '{backbone_name}' is not supported.")
     
+    anchor_sizes = ((32, 64, 128, 256, 512),)
+    aspect_ratios = ((0.5, 1.0, 2.0),)
+    anchor_generator = torchvision.models.detection.AnchorGenerator(sizes=anchor_sizes, aspect_ratios=aspect_ratios)
+    
     # Create the model using the specified backbone
-    model = FasterRCNN(backbone, num_classes=num_classes, weights=weights)
+    model = FasterRCNN(backbone, num_classes=num_classes, rpn_anchor_generator=anchor_generator, weights=weights)
 
     # Get the number of input features for the classifier
     in_features = model.roi_heads.box_predictor.cls_score.in_features
