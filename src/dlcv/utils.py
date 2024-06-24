@@ -25,7 +25,7 @@ def collate_fn(batch):
     batch = list(filter(lambda x: x is not None, batch))
     return tuple(zip(*batch))
 
-def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizontal_flip_prob, rotation_degrees, milestones, gamma, pretrained_weights, root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR', config_dir='/kaggle/working/create_config'):
+def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizontal_flip_prob, rotation_degrees, milestones, gamma, pretrained_weights= '', root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR', config_dir='/kaggle/working/create_config'):
     # Get default configuration
     cfg = get_cfg_defaults()
 
