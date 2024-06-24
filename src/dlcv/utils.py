@@ -25,7 +25,11 @@ def collate_fn(batch):
     batch = list(filter(lambda x: x is not None, batch))
     return tuple(zip(*batch))
 
-def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizontal_flip_prob, rotation_degrees, milestones, gamma, pretrained_weights= '', root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR', config_dir='/kaggle/working/create_config'):
+def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
+                   horizontal_flip_prob, rotation_degrees, milestones, gamma,
+                    pretrained_weights= '',
+                    root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR',
+                    config_dir='/kaggle/working/create_config'):
     # Get default configuration
     cfg = get_cfg_defaults()
 
@@ -47,10 +51,14 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizonta
 
     # Define the path for the new config file
     config_file_path = os.path.join(config_dir, f'{run_name}.yaml')
+    #os.makedirs(config_file_path, exist_ok=True)
 
+     # Convert the config object to a dictionary
+    cfg_dict = cfg.to_dict()
+    
     # Save the updated configuration to a YAML file
     with open(config_file_path, 'w') as config_file:
-        yaml.dump(cfg, config_file, default_flow_style=False)
+        yaml.dump(cfg_dict, config_file, default_flow_style=False)
 
     print(f"Config file saved at: {config_file_path}")
     with open(config_file_path, 'r') as file:

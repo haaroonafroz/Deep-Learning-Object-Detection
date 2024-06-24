@@ -10,7 +10,7 @@ import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # This package internal functions should be used here
-from dlcv.config import get_cfg_defaults
+from dlcv.config import get_cfg_defaults, get_cfg_from_file
 from dlcv.dataset import *
 from dlcv.utils import *
 from dlcv.training import train_and_evaluate_model
@@ -113,6 +113,7 @@ if __name__ == '__main__':
         # Fallback to an environment variable or a default config path
         config_file_path = os.getenv('CONFIG_FILE', 'configs/default_config.yaml')
 
-    cfg.CONFIG_FILE_PATH = config_file_path
-    cfg.merge_from_file(config_file_path)
+    # cfg.CONFIG_FILE_PATH = config_file_path
+    # cfg.merge_from_file(config_file_path)
+    cfg = get_cfg_from_file(config_file_path)
     main(cfg)

@@ -1,4 +1,5 @@
 from yacs.config import CfgNode as CN
+import yaml
 
 def get_cfg_defaults():
     """
@@ -51,7 +52,10 @@ def get_cfg_from_file(cfg_file):
     Returns:
         CfgNode: Configuration object.
     """
+    with open(cfg_file, 'r') as file:
+        cfg_dict = yaml.safe_load(file)
+
     cfg = get_cfg_defaults()
-    cfg.merge_from_file(cfg_file)
+    cfg.merge_from_other_cfg(CN(cfg_dict))
     cfg.freeze()
     return cfg
