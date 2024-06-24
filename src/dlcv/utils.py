@@ -77,19 +77,22 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
 def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     # Define backbones and weights
     if backbone_name == 'resnet50':
+        weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT
         backbone = torchvision.models.resnet50(weights=weights if pretrained else None)
         backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
         backbone.out_channels = 2048
-        weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT
+        
     elif backbone_name == 'resnet101':
+        weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT  # Update this line when FasterRCNN_ResNet101 weights are available
         backbone = torchvision.models.resnet101(weights=weights if pretrained else None)
         backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
         backbone.out_channels = 2048
-        weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT  # Update this line when FasterRCNN_ResNet101 weights are available
+        
     elif backbone_name == 'mobilenet':
+        weights = torchvision.models.detection.FasterRCNN_MobileNet_V3_Large_FPN_Weights.DEFAULT
         backbone = torchvision.models.mobilenet_v3_large(weights=weights if pretrained else None).features
         backbone.out_channels = 960
-        weights = torchvision.models.detection.FasterRCNN_MobileNet_V3_Large_FPN_Weights.DEFAULT
+        
     else:
         raise ValueError(f"Backbone '{backbone_name}' is not supported.")
     
