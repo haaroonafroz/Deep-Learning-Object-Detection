@@ -80,7 +80,7 @@ def get_model(num_classes, backbone_name='resnet50', pretrained=True):
         weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT
         backbone = torchvision.models.resnet50(pretrained = pretrained)#(weights=weights if pretrained else None)
         # backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
-        # backbone.out_channels = 2048
+        backbone.out_channels = 2048
         
     elif backbone_name == 'resnet101':
         weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT  # Update this line when FasterRCNN_ResNet101 weights are available
