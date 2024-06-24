@@ -53,7 +53,7 @@ def main(cfg):
     test_loader = DataLoader(test_dataset, batch_size=cfg.TRAIN.BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
     # Initialize model
-    model = get_model(num_classes=cfg.MODEL.NUM_CLASSES)
+    model = get_model(num_classes=cfg.MODEL.NUM_CLASSES, backbone_name=cfg.MODEL.BACKBONE, pretrained=True)
     model.to(device)
 
     # Load pretrained weights if specified
