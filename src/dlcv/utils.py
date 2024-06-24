@@ -25,6 +25,16 @@ def collate_fn(batch):
     batch = list(filter(lambda x: x is not None, batch))
     return tuple(zip(*batch))
 
+def cfg_node_to_dict(cfg_node):
+    """Convert a yacs CfgNode to a dictionary."""
+    if not isinstance(cfg_node, CN):
+        return cfg_node
+    else:
+        cfg_dict = dict(cfg_node)
+        for k, v in cfg_dict.items():
+            cfg_dict[k] = cfg_node_to_dict(v)
+        return cfg_dict
+
 def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
                    horizontal_flip_prob, rotation_degrees, milestones, gamma,
                     pretrained_weights= '',
@@ -54,7 +64,7 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
     #os.makedirs(config_file_path, exist_ok=True)
 
      # Convert the config object to a dictionary
-    cfg_dict = cfg.to_dict()
+    cfg_dict = cfg_node_to_dict(cfg)
     
     # Save the updated configuration to a YAML file
     with open(config_file_path, 'w') as config_file:
