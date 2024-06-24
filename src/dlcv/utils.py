@@ -99,7 +99,7 @@ def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     
     anchor_sizes = ((32, 64, 128, 256, 512),)
     aspect_ratios = ((0.5, 1.0, 2.0),)
-    anchor_generator = torchvision.models.detection.AnchorGenerator(sizes=anchor_sizes, aspect_ratios=aspect_ratios)
+    anchor_generator = AnchorGenerator(sizes=anchor_sizes, aspect_ratios=aspect_ratios)
     
     # Create the model using the specified backbone
     model = FasterRCNN(backbone, num_classes=num_classes, rpn_anchor_generator=anchor_generator, weights=weights)
