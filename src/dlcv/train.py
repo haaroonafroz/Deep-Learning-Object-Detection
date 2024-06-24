@@ -111,9 +111,9 @@ if __name__ == '__main__':
         config_file_path = args.config
     else:
         # Fallback to an environment variable or a default config path
-        config_file_path = os.getenv('CONFIG_FILE', 'configs/default_config.yaml')
+        config_file_path = os.getenv('CONFIG_FILE', 'configs/config_first.yaml')
 
-    # cfg.CONFIG_FILE_PATH = config_file_path
+    cfg.CONFIG_FILE_PATH = config_file_path
     # cfg.merge_from_file(config_file_path)
     cfg = get_cfg_from_file(config_file_path)
     main(cfg)
