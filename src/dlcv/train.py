@@ -26,7 +26,7 @@ def main(cfg):
     else:
         print(f"Dataset root path exists: {cfg.DATA.ROOT}")
 
-    config_file_path = cfg.CONFIG_FILE_PATH
+    #config_file_path = cfg.CONFIG_FILE_PATH
     print(f"Using configuration file: {config_file_path}")
     print("Configuration for this run:")
     print(cfg.dump())
