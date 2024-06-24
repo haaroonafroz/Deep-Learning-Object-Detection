@@ -25,7 +25,7 @@ def collate_fn(batch):
     batch = list(filter(lambda x: x is not None, batch))
     return tuple(zip(*batch))
 
-def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizontal_flip_prob, rotation_degrees, milestones, gamma, root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR', config_dir='/kaggle/working/create_config'):
+def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizontal_flip_prob, rotation_degrees, milestones, gamma, pretrained_weights, root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR', config_dir='/kaggle/working/create_config'):
     # Get default configuration
     cfg = get_cfg_defaults()
 
@@ -40,6 +40,7 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs, horizonta
     cfg.rotation_degrees = rotation_degrees
     cfg.milestones = milestones
     cfg.gamma = gamma
+    cfg.pretrained_weights = pretrained_weights
 
     # Ensure the config directory exists
     os.makedirs(config_dir, exist_ok=True)
@@ -130,65 +131,6 @@ def write_results_to_csv(file_path, train_losses, test_losses, test_accuracies):
         writer.writerow(['Epoch', 'Train Loss', 'Test Loss', 'Test Accuracy'])
         for epoch in range(len(train_losses)):
             writer.writerow([epoch + 1, train_losses[epoch], test_losses[epoch], test_accuracies[epoch]])
-
-def plot_multiple_losses_and_accuracies(model_data_list):
-
-    # Plotting losses
-    plt.figure(figsize=(10, 5))
-    for model_data in model_data_list:
-        plt.plot(model_data['train_losses'], label=f"{model_data['name']} Train Loss")
-        plt.plot(model_data['test_losses'], label=f"{model_data['name']} Test Loss")
-
-    plt.xlabel('Epoch')
-    plt.ylabel('Loss')
-    plt.title('Training and Testing Losses')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
-
-    # Plotting accuracies
-    plt.figure(figsize=(10, 5))
-    for model_data in model_data_list:
-        plt.plot(model_data['test_accuracies'], label=f"{model_data['name']} Test Accuracy")
-
-    plt.xlabel('Epoch')
-    plt.ylabel('Accuracy')
-    plt.title('Test Accuracy')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
-
-def plot_samples_with_predictions(images, labels, predictions, class_names):
-    
-    fig, axes = plt.subplots(3, 3, figsize=(10, 10))
-    axes = axes.flatten()
-
-    for i, ax in enumerate(axes):
-        ax.imshow(images[i].permute(1, 2, 0))
-        ax.set_title(f"True: {class_names[labels[i]]}\nPredicted: {class_names[predictions[i]]}", fontsize=10)
-        ax.axis('off')
-
-    plt.tight_layout()
-    plt.show()
-    plt.savefig('/kaggle/working/samples_with_predictions.png')
-    plt.close()
-
-
-def plot_confusion_matrix(labels, preds, class_names):
-    """
-    Plots a confusion matrix using ground truth labels and predictions.
-    """
-    cm = confusion_matrix(labels, preds)
-    cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(cm, annot=True, cmap='Blues', fmt=".2f", xticklabels=class_names, yticklabels=class_names)
-    plt.xlabel('Predicted labels')
-    plt.ylabel('True labels')
-    plt.title('Confusion Matrix')
-    plt.show()
-    plt.savefig('/kaggle/working/confusion_matrix.png')
-    plt.close()
 
 
 def plot_metrics(metrics_file_path):
