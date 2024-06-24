@@ -6,7 +6,8 @@ from PIL import Image
 import torch
 import torchvision
 import torch.nn as nn
-from torchvision.models.detection import FasterRCNN, AnchorGenerator
+from torchvision.models.detection import FasterRCNN
+from torchvision.models import AnchorGenerator
 from torchvision.models.detection import fasterrcnn_resnet50_fpn, FasterRCNN_ResNet50_FPN_Weights
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
