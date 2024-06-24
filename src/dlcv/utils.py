@@ -44,18 +44,17 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
     cfg = get_cfg_defaults()
 
     # Update the configuration with provided arguments
-    cfg.root = root
-    cfg.run_name = run_name
-    cfg.backbone = backbone
-    cfg.base_lr = base_lr
-    cfg.batch_size = batch_size
-    cfg.num_epochs = num_epochs
-    cfg.horizontal_flip_prob = horizontal_flip_prob
-    cfg.rotation_degrees = rotation_degrees
-    cfg.milestones = milestones
-    cfg.gamma = gamma
-    cfg.pretrained_weights = pretrained_weights
-
+    cfg.DATA.ROOT = root
+    cfg.MISC.RUN_NAME = run_name
+    cfg.MODEL.BACKBONE = backbone
+    cfg.TRAIN.BASE_LR = base_lr
+    cfg.TRAIN.BATCH_SIZE = batch_size
+    cfg.TRAIN.NUM_EPOCHS = num_epochs
+    cfg.AUGMENTATION.HORIZONTAL_FLIP_PROB = horizontal_flip_prob
+    cfg.AUGMENTATION.ROTATION_DEGREES = rotation_degrees
+    cfg.TRAIN.MILESTONES = milestones
+    cfg.TRAIN.GAMMA = gamma
+    cfg.MISC.PRETRAINED_WEIGHTS = pretrained_weights
     # Ensure the config directory exists
     os.makedirs(config_dir, exist_ok=True)
 
