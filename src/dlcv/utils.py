@@ -78,26 +78,26 @@ def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     # Define backbones and weights
     if backbone_name == 'resnet50':
         weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT
-        backbone = torchvision.models.resnet50(weights=weights if pretrained else None)
+        backbone = torchvision.models.resnet50(pretrained = pretrained)#(weights=weights if pretrained else None)
         backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
         backbone.out_channels = 2048
         
     elif backbone_name == 'resnet101':
         weights = torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT  # Update this line when FasterRCNN_ResNet101 weights are available
-        backbone = torchvision.models.resnet101(weights=weights if pretrained else None)
+        backbone = torchvision.models.resnet101(pretrained)
         backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
         backbone.out_channels = 2048
         
     elif backbone_name == 'mobilenet':
         weights = torchvision.models.detection.FasterRCNN_MobileNet_V3_Large_FPN_Weights.DEFAULT
-        backbone = torchvision.models.mobilenet_v3_large(weights=weights if pretrained else None).features
+        backbone = torchvision.models.mobilenet_v3_large(pretrained=pretrained).features
         backbone.out_channels = 960
         
     else:
         raise ValueError(f"Backbone '{backbone_name}' is not supported.")
     
     # Create the model using the specified backbone
-    model = FasterRCNN(backbone, num_classes=num_classes)
+    model = FasterRCNN(backbone, num_classes=num_classes, weights=weights)
 
     # Get the number of input features for the classifier
     in_features = model.roi_heads.box_predictor.cls_score.in_features
