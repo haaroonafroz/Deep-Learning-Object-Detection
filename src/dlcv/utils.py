@@ -37,7 +37,7 @@ def cfg_node_to_dict(cfg_node):
         return cfg_dict
 
 def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
-                   horizontal_flip_prob, rotation_degrees, milestones, gamma,
+                   horizontal_flip_prob, rotation_degrees, milestones, gamma, early_stopping,
                     pretrained_weights= '',
                     root='/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR',
                     config_dir='/kaggle/working/create_config'):
@@ -56,6 +56,8 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
     cfg.TRAIN.MILESTONES = milestones
     cfg.TRAIN.GAMMA = gamma
     cfg.MISC.PRETRAINED_WEIGHTS = pretrained_weights
+    cfg.TRAIN.EARLY_STOPPING = early_stopping
+
     # Ensure the config directory exists
     os.makedirs(config_dir, exist_ok=True)
 
