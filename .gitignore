@@ -166,4 +166,3 @@ data/
 dlcv24_2_env/
 *.pth
 *.json
-tests.txt
