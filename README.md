@@ -122,7 +122,7 @@ The configuration files change the following hyper-parameters during the trainin
 ## Steps Involved in running the Kaggle Notebook:
 ### Step 1: Install the Github Repository:
 The Github Repository is installed as a Python package using the !pip install git+{url} command where:  
-url = f"https://{user}:{token}@github.com/BUW-CV/dlcv24-assignment-4-haaroonafroz"  
+url = f"https://{user}:{token}@github.com/BUW-CV/dlcv24-individual-final-project-haaroonafroz"  
 Using this method, the GitHub repository is installed along with all the dependencies mentioned in the `pyproject.toml` file.  
 The Version of the Repository can be validated by confirming the commit ID while the package is being installed.  
 
