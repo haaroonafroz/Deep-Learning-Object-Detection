@@ -1,21 +1,23 @@
 DATA:
-  DATASET: 'CISOL'
-  ROOT: './data/cisol_TD-TSR/TD-TSR'
+  DATASET: 'CISOL_TD-TSR'
+  ROOT: '/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR'
 
 MODEL:
   NUM_CLASSES: 6
+  BACKBONE: 'resnet_50'
 
 MISC:
   RUN_NAME: 'CISOL_Default_run'
-  RESULTS_CSV: './results' #'/kaggle/working/repository_content/results'
-  SAVE_MODEL_PATH: './saved_models' #'/kaggle/working/repository_content/saved_models'
+  RESULTS_CSV: '/kaggle/working/repository_content/results'
+  SAVE_MODEL_PATH: '/kaggle/working/repository_content/saved_models'
+  PRETRAINED_WEIGHTS: ''
 
 TRAIN:
   BASE_LR: 0.001
   MILESTONES: [10, 20]
   GAMMA: 0.1
   BATCH_SIZE: 8
-  NUM_EPOCHS: 2
+  NUM_EPOCHS: 40
   EARLY_STOPPING: False
 
 AUGMENTATION:

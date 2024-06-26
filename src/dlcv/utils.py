@@ -26,6 +26,7 @@ def collate_fn(batch):
     batch = list(filter(lambda x: x is not None, batch))
     return tuple(zip(*batch))
 
+
 def cfg_node_to_dict(cfg_node):
     """Convert a yacs CfgNode to a dictionary."""
     if not isinstance(cfg_node, CN):
@@ -77,6 +78,7 @@ def create_config(run_name, backbone, base_lr, batch_size, num_epochs,
         print(file.read())
     return config_file_path
 
+
 def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     # Define backbones and weights
     if backbone_name == 'resnet50':
@@ -112,6 +114,7 @@ def get_model(num_classes, backbone_name='resnet50', pretrained=True):
     model.roi_heads.box_predictor = torchvision.models.detection.faster_rcnn.FastRCNNPredictor(in_features, num_classes)
 
     return model
+
 
 def load_pretrained_weights(network, weights_path, device):
     # Load the state_dict from the saved file
