@@ -128,15 +128,15 @@ The Version of the Repository can be validated by confirming the commit ID while
 
 ### Step 2: Import the Repository Content:
 The Repository content is imported using the 'os' and 'shutil' libraries by copying the content from the repository to the '/kaggle/working/' directory. This ensures that the repository content is easily accessible when called/referenced in the Notebook. The Notebook is also programmed to print the Repository content to ensure where the files are placed within the environment so that providing an absolute path is easy.  
-![Repository Content](./src/dlcv/images/Repository_content.png)
+![Repository Content](./images/Repository_content.png)
 
 
 ### Step 3: Create a Config file:
 Using the 'create_config' function from `utils.py`,  a configuration file (of type .yaml) is generated and placed in the working directory of the Notebook. This Configuration file can be used to run the Training and Evaluation function by setting it as the 'config_file_path' when running the `train.py` file.  
-![Create Config](./src/dlcv/images/create_config_utils1.png)
-![Create Config](./src/dlcv/images/create_config_utils2.png)
-![Create Config](./src/dlcv/images/create_config_kaggle1.png)
-![Create Config](./src/dlcv/images/create_config_kaggle1.png)
+![Create Config](./images/create_config_utils1.png)
+![Create Config](./images/create_config_utils2.png)
+![Create Config](./images/create_config_kaggle1.png)
+![Create Config](./images/create_config_kaggle1.png)
 
 ### Step 4: Training and Evaluation:
 The `train.py` main file is run by following these steps:
@@ -171,20 +171,20 @@ Time: Training: 3Min 46sec, Evaluation: 50sec
 The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
 
 ### Sample Predictions: (Table Elements)
-![inference_129](./src/dlcv/images/inference_129_Resnet50_firstRun.png)
-![inference_112](./src/dlcv/images/inference_112_Resnet50_firstRun.png)
-![inference_43](./src/dlcv/images/inference_43_Resnet50_firstRun.png)
-![inference_47](./src/dlcv/images/inference_47_Resnet50_firstRun.png)
+![inference_129](./images/inference_129_Resnet50_firstRun.png)
+![inference_112](./images/inference_112_Resnet50_firstRun.png)
+![inference_43](./images/inference_43_Resnet50_firstRun.png)
+![inference_47](./images/inference_47_Resnet50_firstRun.png)
 
 
 ## Training Loss over Epochs: First Run
 The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 40 epochs.  
-![Training Loss](./src/dlcv/images/training_loss_Resnet50_firstRun.png)
+![Training Loss](./images/training_loss_Resnet50_firstRun.png)
 
 ## mAP Metrics Plotting: First Run
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
-![mAP_firstRun](./src/dlcv/images/mAP_Resnet50_firstRun.png)
-![mAP_sizes_firstRun](./src/dlcv/images/mAP_sizes_Resnet50_firstRun.png)  
+![mAP_firstRun](./images/mAP_Resnet50_firstRun.png)
+![mAP_sizes_firstRun](./images/mAP_sizes_Resnet50_firstRun.png)  
 
 -------------------------------------------------------------------------------------------------------------
 ## Second Configuration: ResNet101
@@ -207,20 +207,20 @@ Time: Training: 4Min 34sec, Evaluation: 57sec
 The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
 
 ### Sample Predictions: (Table Elements)
-![inference_119](./src/dlcv/images/inference_119_Resnet101_secondRun.png)
-![inference_105](./src/dlcv/images/inference_105_Resnet101_secondRun.png)
-![inference_48](./src/dlcv/images/inference_48_Resnet101_secondRun.png)
-![inference_59](./src/dlcv/images/inference_59_Resnet101_secondRun.png)
+![inference_119](./images/inference_119_Resnet101_secondRun.png)
+![inference_105](./images/inference_105_Resnet101_secondRun.png)
+![inference_48](./images/inference_48_Resnet101_secondRun.png)
+![inference_59](./images/inference_59_Resnet101_secondRun.png)
 
 
 ## Training Loss over Epochs: Second Configuration
 The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 4 epochs.  
-![Training Loss](./src/dlcv/images/training_loss_Resnet101_secondRun.png)
+![Training Loss](./images/training_loss_Resnet101_secondRun.png)
 
 ## mAP Metrics Plotting: Second Run
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
-![mAP_secondRun](./src/dlcv/images/mAP_Resnet101_secondRun.png)
-![mAP_sizes_secondRun](./src/dlcv/images/mAP_sizes_Resnet101_secondRun.png)  
+![mAP_secondRun](./images/mAP_Resnet101_secondRun.png)
+![mAP_sizes_secondRun](./images/mAP_sizes_Resnet101_secondRun.png)  
 
 -------------------------------------------------------------------------------------------------------------
 ## Third Configuration: MobileNet
@@ -242,20 +242,20 @@ Time: Training: 2Min 51sec, Evaluation: 45sec
 The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
 
 ### Sample Predictions: (Table Elements)
-![inference_43](./src/dlcv/images/inference_43_Mobilenet_thirdRun.png)
-![inference_27](./src/dlcv/images/inference_27_Mobilenet_thirdRun.png)
-![inference_101](./src/dlcv/images/inference_101_Mobilenet_thirdRun.png)
-![inference_130](./src/dlcv/images/inference_130_Mobilenet_thirdRun.png)
+![inference_43](./images/inference_43_Mobilenet_thirdRun.png)
+![inference_27](./images/inference_27_Mobilenet_thirdRun.png)
+![inference_101](./images/inference_101_Mobilenet_thirdRun.png)
+![inference_130](./images/inference_130_Mobilenet_thirdRun.png)
 
 
 ## Training Loss over Epochs: Third Configuration
 The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 9 epochs.  
-![Training Loss](./src/dlcv/images/training_loss_Mobilenet_thirdRun.png)
+![Training Loss](./images/training_loss_Mobilenet_thirdRun.png)
 
 ## mAP Metrics Plotting: Second Run
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
-![mAP_thirdRun](./src/dlcv/images/mAP_Mobilenet_thirdRun.png)
-![mAP_sizes_thirdRun](./src/dlcv/images/mAP_sizes_Mobilenet_thirdRun.png)  
+![mAP_thirdRun](./images/mAP_Mobilenet_thirdRun.png)
+![mAP_sizes_thirdRun](./images/mAP_sizes_Mobilenet_thirdRun.png)  
 
 # Conclusion
 After training the model with 3 different backbone configurations, the generated JSON file was pushed to `Eval.ai` and the following results were observed on the test dataset:
@@ -288,5 +288,5 @@ which is the same as mentioned in the submission guidlines.
 
 #### Eval.ai username: haaroonafroz  
 ### Submissions:
-![evalai_submission](./src/dlcv/images/evalai_submissions.png)
-![evalai_leaderboard](./src/dlcv/images/evalai_leaderboard.png)
+![evalai_submission](./images/evalai_submissions.png)
+![evalai_leaderboard](./images/evalai_leaderboard.png)

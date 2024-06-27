@@ -12,7 +12,7 @@ def get_cfg_defaults():
     # Data settings
     _C.DATA = CN()
     _C.DATA.DATASET = 'CISOL'
-    _C.DATA.ROOT = './data/cisol_TD-TSR' # /kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR'
+    _C.DATA.ROOT = '/kaggle/input/construction-industry-steel-ordering-lists-cisol/cisol_TD-TSR'
 
     # Model settings
     _C.MODEL = CN()

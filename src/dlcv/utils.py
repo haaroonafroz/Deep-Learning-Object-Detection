@@ -174,7 +174,8 @@ def plot_metrics(metrics_file_path):
 
     epochs = range(1, len(metrics_history["train_loss"]) + 1)
 
-    images_dir = "/kaggle/working/repository_content/images"
+    images_dir = "/kaggle/working/metric_images"
+    os.makedirs(images_dir, exist_ok=True)
 
     # Plot training loss
     plt.figure(figsize=(10, 5))
@@ -212,9 +213,9 @@ def plot_metrics(metrics_file_path):
     print(f"Plots saved in {images_dir}")
 
 
-def visualize_inference_results(model, dataset, coco, device, num_images=5, output_dir='/kaggle/working/repository_content/images'):
+def visualize_inference_results(model, dataset, coco, device, num_images=5, output_dir='/kaggle/working/inference_images'):
     model.eval()
-    # os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
 
     transform = transforms.ToTensor()
     dataset_size = len(dataset)

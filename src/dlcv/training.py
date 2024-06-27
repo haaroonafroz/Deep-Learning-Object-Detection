@@ -100,8 +100,8 @@ def train_and_evaluate_model(model, train_loader, val_loader, optimizer, num_epo
     metrics_history = {"train_loss": [], "mAP": [], "mAP_50": [], "mAP_75": [], "mAP_small": [], "mAP_medium": [], "mAP_large": []}
     
     #Save the Metrics in /results
-    results_dir = "/kaggle/working/repository_content/results"
-    # os.makedirs(results_dir, exist_ok=True)
+    results_dir = "/kaggle/working/results"
+    os.makedirs(results_dir, exist_ok=True)
     metrics_file_path = os.path.join(results_dir, "metrics_history.json")
 
 
