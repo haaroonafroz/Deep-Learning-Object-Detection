@@ -1,7 +1,7 @@
 # CISOL Dataset - Object Detection Deep Learning Model
 
 ## Introduction
-This project aims to detect table elements n the CISOL Dataset Images, using the FasterRCNN Model with A ResNet50 Backbone
+This project aims to detect table elements in the CISOL Dataset Images, using the FasterRCNN Model with variable backbones.
 
 
 ## Project Structure
