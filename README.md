@@ -257,36 +257,63 @@ The `plot_metrics` function also uses the saved results to plot the mAP Metrics 
 ![mAP_thirdRun](./images/mAP_Mobilenet_thirdRun.png)
 ![mAP_sizes_thirdRun](./images/mAP_sizes_Mobilenet_thirdRun.png)  
 
+---------------------------------------------------------------------------------------------------  
+# Interactive Visualization: Using the Notebook as a Pytorch Package
+After the first 3 training runs, the saved models for each respective training runs were used to run one more round of training and evaluation.  
+For these runs, an interactive method for visualizing the inference results was implemented:  
+![get_model](./images/get_model.png)  
+![visualize_inference_results](./images/visualize_inference_results.png)  
+
 # Conclusion
-After training the model with 3 different backbone configurations, the generated JSON file was pushed to `Eval.ai` and the following results were observed on the test dataset:
+After training the model with 3 different backbone configurations, the generated JSON file was pushed to `Eval.ai` and the following results were observed on the test dataset:  
+
 1. FasterRCNN Model (ResNet50 Backbone):  
+`First Run`: 40 Epochs  
 "mAP": 51.321747138025046  
 "mAP IoU=.50": 60.89690064127804  
 "mAP IoU=.75": 56.43127286619124  
+`Second Run`: 30 Epochs  
+"mAP": 53.030737024040775  
+"mAP IoU=.50": 61.29460891530856  
+"mAP IoU=.75": 58.19626560674476  
 
 2. FasterRCNN Model (ResNet101 Backbone):  
+`First Run`: 40 Epochs  
+"mAP": 51.16211602905256  
+"mAP IoU=.50": 60.2160120654103  
+"mAP IoU=.75": 56.034203458428856  
+`Second Run`: 30 Epochs  
 "mAP": 51.16211602905256  
 "mAP IoU=.50": 60.2160120654103  
 "mAP IoU=.75": 56.034203458428856  
 
 3. FaterRCNN Model (MobileNet Backbone):  
+`First Run`: 60 Epochs  
 "mAP": 51.24333915895759  
 "mAP IoU=.50": 61.62360245036874  
 "mAP IoU=.75": 56.9741775965515  
-
+`Second Run`: 30 Epochs  
+"mAP": 55.7283211853313  
+"mAP IoU=.50": 65.0254162650605  
+"mAP IoU=.75": 60.1306060659238  
+  
+  
+From the above results, we can observe that the FasterRCNN Model performs the best Object Detection task for detecting Table Elements, when trained with the `ResNet101` backbone for 70 Epochs.  
 --------------------------------------------------------------------------------------------------
 
 # Eval.ai Submission
 The `utils.py` file contains the `generate_coco_results` function which defines the method to use the trained model and make predictions on the 'Test' dataset. These predictions are saved in a JSON file in the working directory of the Kaggle Notebook.  
-This JSON file is of the format:
-        "file_name": image_name,
-        "category_id": int(label.item()),
-        "bbox": [float(xmin), float(ymin), float(width), float(height)],
+This JSON file is of the format:  
+        "file_name": image_name,  
+        "category_id": int(label.item()),  
+        "bbox": [float(xmin), float(ymin), float(width), float(height)],  
         "score": float(score.item())  
 
 which is the same as mentioned in the submission guidlines.  
 
 #### Eval.ai username: haaroonafroz  
-### Submissions:
-![evalai_submission](./images/evalai_submissions.png)
+### Submissions:  
+A total of 6 submissions were made for the Indivisual Final Prject, as can be seen in the following photo.  
+![evalai_submission](./images/evalai_submissions.png)  
+#### Leaderboard with the most Promisisng Result:  
 ![evalai_leaderboard](./images/evalai_leaderboard.png)
