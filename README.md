@@ -153,7 +153,7 @@ The `train.py` main file is run by following these steps:
 # Results
 
 ## First Configuration: ResNet50
-#### Version: 2/4
+#### Version: 2/7
 The Model is run using the GPU P100 Accelerator for 40 Epochs.
 ### 1st Epoch Result:
 Epoch [1/40], Train Loss: 2.2911, mAP: 0.0000  
@@ -188,7 +188,7 @@ The `plot_metrics` function also uses the saved results to plot the mAP Metrics 
 
 -------------------------------------------------------------------------------------------------------------
 ## Second Configuration: ResNet101
-#### Version: 3/4
+#### Version: 3/7
 The Model is run using the GPU P100 Accelerator for 40 Epochs.  
 
 ### 1st Epoch Result:
@@ -224,7 +224,7 @@ The `plot_metrics` function also uses the saved results to plot the mAP Metrics 
 
 -------------------------------------------------------------------------------------------------------------
 ## Third Configuration: MobileNet
-#### Version: 4/4
+#### Version: 4/7
 The Model is run using the GPU P100 Accelerator for 60 Epochs.    
 ### 1st Epoch Result:
 Epoch [1/60]: Train Loss: 1.9932, mAP: 0.0004  
@@ -268,31 +268,31 @@ For these runs, an interactive method for visualizing the inference results was 
 After training the model with 3 different backbone configurations, the generated JSON file was pushed to `Eval.ai` and the following results were observed on the test dataset:  
 
 1. FasterRCNN Model (ResNet50 Backbone):  
-`First Run`: 40 Epochs  
+`First Run`: Version 2/7- 40 Epochs  
 "mAP": 51.321747138025046  
 "mAP IoU=.50": 60.89690064127804  
 "mAP IoU=.75": 56.43127286619124  
-`Second Run`: 30 Epochs  
+`Second Run`: Version 6/7- 30 Epochs  
 "mAP": 53.030737024040775  
 "mAP IoU=.50": 61.29460891530856  
 "mAP IoU=.75": 58.19626560674476  
 
-2. FasterRCNN Model (ResNet101 Backbone):  
-`First Run`: 40 Epochs  
+3. FasterRCNN Model (ResNet101 Backbone):  
+`First Run`: Version 4/7- 40 Epochs  
 "mAP": 51.16211602905256  
 "mAP IoU=.50": 60.2160120654103  
 "mAP IoU=.75": 56.034203458428856  
-`Second Run`: 30 Epochs  
+`Second Run`: Version 7/7- 30 Epochs  
 "mAP": 51.16211602905256  
 "mAP IoU=.50": 60.2160120654103  
 "mAP IoU=.75": 56.034203458428856  
 
-3. FaterRCNN Model (MobileNet Backbone):  
-`First Run`: 60 Epochs  
+4. FaterRCNN Model (MobileNet Backbone):  
+`First Run`: Version 4/7- 60 Epochs  
 "mAP": 51.24333915895759  
 "mAP IoU=.50": 61.62360245036874  
 "mAP IoU=.75": 56.9741775965515  
-`Second Run`: 30 Epochs  
+`Second Run`: Version 5/7- 30 Epochs  
 "mAP": 55.7283211853313  
 "mAP IoU=.50": 65.0254162650605  
 "mAP IoU=.75": 60.1306060659238  
