@@ -32,8 +32,41 @@ For this project, the following weights were used for each backbone configuratio
 |   Resnet101    |  FasterRCNN_ResNet50_FPN_Weights.DEFAULT            |
 |   MobileNet    |  FasterRCNN_MobileNet_V3_Large_FPN_Weights.DEFAULT  |
 
-## Configuration Parameters
-#### The .yaml files contained in the `./configs` folder defines the hyper-parameters used to run the training Model on different Model Hyper-parameters:
+
+
+## Steps Involved in running the Kaggle Notebook:
+### Step 1: Install the Github Repository:
+The Github Repository is installed as a Python package using the !pip install git+{url} command where:  
+url = f"https://{user}:{token}@github.com/BUW-CV/dlcv24-individual-final-project-haaroonafroz"  
+Using this method, the GitHub repository is installed along with all the dependencies mentioned in the `pyproject.toml` file.  
+The Version of the Repository can be validated by confirming the commit ID while the package is being installed.  
+
+### Step 2: Import the Repository Content:
+The Repository content is imported using the 'os' and 'shutil' libraries by copying the content from the repository to the '/kaggle/working/' directory. This ensures that the repository content is easily accessible when called/referenced in the Notebook. The Notebook is also programmed to print the Repository content to ensure where the files are placed within the environment so that providing an absolute path is easy.  
+![Repository Content](./images/Repository_content.png)
+
+
+### Step 3: Create a Config file:
+Using the 'create_config' function from `utils.py`,  a configuration file (of type .yaml) is generated and placed in the working directory of the Notebook. This Configuration file can be used to run the Training and Evaluation function by setting it as the 'config_file_path' when running the `train.py` file.  
+![Create Config](./images/create_config_utils1.png)
+![Create Config](./images/create_config_utils2.png)
+![Create Config](./images/create_config_kaggle1.png)
+![Create Config](./images/create_config_kaggle1.png)
+
+### Step 4: Training and Evaluation:
+The `train.py` main file is run by following these steps:
+    - Set the path for the configuration file on which the training process is to be run. (config_file_path = create_config())
+    - Set an environment variable (CONFIG_FILE) to ensure that in case the config_file_path is not read / provided, the training can be run on the default configuration file (default_config.yaml).
+    - The `train.py` file receives the argument using the yacs package in the form of CfgNode. When a configuration file(.yaml) is passed in the Notebook, the configurations are appended and passed into the main function.
+    - The 'subprocess' library is used to run the `train.py` file by passing the arguments.
+
+
+## Kaggle Notebook:
+### The Kaggle Notebook can be viewed using the following link:
+[Kaggle Notebook](https://www.kaggle.com/code/haaroonafroz/dlcv-individual-project-haaroonafrozognawala)
+
+
+# Configuration Parameters  
 
 The Configurations that are defined in the `config.py` file are changed by fetching the hyper-parameters from the configuration.yaml files and replacing the default configurations. When a Configuration file is not mentioned while running the `train.py` , the model is trained using the `default_config.yaml` file which is set as an Environment variable in the Kaggle Notebook.  
 The configuration files change the following hyper-parameters during the training and evaluation cycles:  
@@ -119,56 +152,23 @@ The configuration files change the following hyper-parameters during the trainin
 
     **AUGMENTATION**:
         HORIZONTAL_FLIP_PROB: 0.5
-        ROTATION_DEGREES: 10
+        ROTATION_DEGREES: 10  
 
-
-## Steps Involved in running the Kaggle Notebook:
-### Step 1: Install the Github Repository:
-The Github Repository is installed as a Python package using the !pip install git+{url} command where:  
-url = f"https://{user}:{token}@github.com/BUW-CV/dlcv24-individual-final-project-haaroonafroz"  
-Using this method, the GitHub repository is installed along with all the dependencies mentioned in the `pyproject.toml` file.  
-The Version of the Repository can be validated by confirming the commit ID while the package is being installed.  
-
-### Step 2: Import the Repository Content:
-The Repository content is imported using the 'os' and 'shutil' libraries by copying the content from the repository to the '/kaggle/working/' directory. This ensures that the repository content is easily accessible when called/referenced in the Notebook. The Notebook is also programmed to print the Repository content to ensure where the files are placed within the environment so that providing an absolute path is easy.  
-![Repository Content](./images/Repository_content.png)
-
-
-### Step 3: Create a Config file:
-Using the 'create_config' function from `utils.py`,  a configuration file (of type .yaml) is generated and placed in the working directory of the Notebook. This Configuration file can be used to run the Training and Evaluation function by setting it as the 'config_file_path' when running the `train.py` file.  
-![Create Config](./images/create_config_utils1.png)
-![Create Config](./images/create_config_utils2.png)
-![Create Config](./images/create_config_kaggle1.png)
-![Create Config](./images/create_config_kaggle1.png)
-
-### Step 4: Training and Evaluation:
-The `train.py` main file is run by following these steps:
-    - Set the path for the configuration file on which the training process is to be run. (config_file_path = create_config())
-    - Set an environment variable (CONFIG_FILE) to ensure that in case the config_file_path is not read / provided, the training can be run on the default configuration file (default_config.yaml).
-    - The `train.py` file receives the argument using the yacs package in the form of CfgNode. When a configuration file(.yaml) is passed in the Notebook, the configurations are appended and passed into the main function.
-    - The 'subprocess' library is used to run the `train.py` file by passing the arguments.
-
-
-## Kaggle Notebook:
-### The Kaggle Notebook can be viewed using the following link:
-[Kaggle Notebook](https://www.kaggle.com/code/haaroonafroz/dlcv-individual-project-haaroonafrozognawala)
-
-# Results
-
-## First Configuration: ResNet50
-#### Version: 2/7
-The Model is run using the GPU P100 Accelerator for 40 Epochs.
-### 1st Epoch Result:
-Epoch [1/40], Train Loss: 2.2911, mAP: 0.0000  
-{'mAP': 1.026036479594107e-06, 'mAP_50': 5.514755089236659e-06, 'mAP_75': 0.0, 'mAP_small': 0.0, 'mAP_medium': 0.0, 'mAP_large': 1.026036479594107e-06}  
-Time: Training: 3Min 59sec, Evaluation: 52sec
-
-### After 40 Epochs:
-Epoch [40/40]: Train Loss: 0.5665, mAP: 0.0600  
-{'mAP': 0.06002088844494126, 'mAP_50': 0.1502604897974755, 'mAP_75': 0.0022192964970503366, 'mAP_small': 0.0, 'mAP_medium': 0.0, 'mAP_large': 0.06002088844494126}  
-Time: Training: 3Min 46sec, Evaluation: 50sec  
-
-#### Total Version Time: 13465.8 seconds
+# Results  
+## FasterRCNN-ResNet50
+#### Version: 6/7
+The Model is run using the GPU P100 Accelerator for 70 Epochs.  
+| Results   |   Epoch: 1/70   |   Epoch: 40/70    |   Epoch: 70/70 |
+|:---------:|:---------------:|:-----------------:|:--------------:|
+|Training Loss| 2.2911 | 0.5665| 0.3994 |
+|mAP|  1.026036479594107e-06 | 0.06002088844494126 | 0.0658 |
+|mAP_50|  5.514755089236659e-06 | 0.1502604897974755 | 0.1557400544118862 |
+|mAP_75|  0.0 | 0.0022192964970503366 | 0.0022192964970503366|
+|mAP_small| 0.0 | 0.0 | 0.0 |
+|mAP_medium| 0.0 | 0.0 | 0.0 |
+|mAP_large| 1.026036479594107e-06 | 0.06002088844494126 | 0.06578527159756851 |
+|Training Time| 3Min 59sec | 3Min 46sec | 04Min 27sec | 
+|Evaluation Time| 52sec | 50sec | 01Min 01sec |  
 
 ## Inference Images: First Run
 The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
