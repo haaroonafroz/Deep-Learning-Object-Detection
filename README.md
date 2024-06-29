@@ -91,7 +91,7 @@ The configuration files change the following hyper-parameters during the trainin
         MILESTONES: [10, 20]
         GAMMA: 0.1
         BATCH_SIZE: 4
-        NUM_EPOCHS: 40
+        NUM_EPOCHS: 70
         EARLY_STOPPING: False
 
     **AUGMENTATION**:
@@ -119,7 +119,7 @@ The configuration files change the following hyper-parameters during the trainin
         MILESTONES: [10, 20]
         GAMMA: 0.1
         BATCH_SIZE: 2
-        NUM_EPOCHS: 40
+        NUM_EPOCHS: 70
         EARLY_STOPPING: False
 
     **AUGMENTATION**:
@@ -147,7 +147,7 @@ The configuration files change the following hyper-parameters during the trainin
         MILESTONES: [10, 20]
         GAMMA: 0.1
         BATCH_SIZE: 8
-        NUM_EPOCHS: 60
+        NUM_EPOCHS: 100
         EARLY_STOPPING: False
 
     **AUGMENTATION**:
@@ -156,8 +156,8 @@ The configuration files change the following hyper-parameters during the trainin
 
 # Results  
 ## FasterRCNN-ResNet50
-#### Version: 6/7
-The Model is run using the GPU P100 Accelerator for 70 Epochs.  
+#### Version: 2/7 & 6/7
+The Model is trained using the GPU P100 Accelerator in 2 batches, for 70 Epochs.  
 | Results   |   Epoch: 1/70   |   Epoch: 40/70    |   Epoch: 70/70 |
 |:---------:|:---------------:|:-----------------:|:--------------:|
 |Training Loss| 2.2911 | 0.5665| 0.3994 |
@@ -169,25 +169,23 @@ The Model is run using the GPU P100 Accelerator for 70 Epochs.
 |mAP_large| 1.026036479594107e-06 | 0.06002088844494126 | 0.06578527159756851 |
 |Training Time| 3Min 59sec | 3Min 46sec | 04Min 27sec | 
 |Evaluation Time| 52sec | 50sec | 01Min 01sec |  
-
-## Inference Images: First Run
-The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
-
-### Sample Predictions: (Table Elements)
-![inference_129](./images/inference_129_Resnet50_firstRun.png)
-![inference_112](./images/inference_112_Resnet50_firstRun.png)
-![inference_43](./images/inference_43_Resnet50_firstRun.png)
-![inference_47](./images/inference_47_Resnet50_firstRun.png)
-
-
-## Training Loss over Epochs: First Run
-The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 40 epochs.  
-![Training Loss](./images/training_loss_Resnet50_firstRun.png)
+  
+## Training Loss over Epochs:  
+The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 40-70 epochs.  
+![Training Loss](./images/training_loss_Resnet50_secondRun.png)
 
 ## mAP Metrics Plotting: First Run
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
-![mAP_firstRun](./images/mAP_Resnet50_firstRun.png)
-![mAP_sizes_firstRun](./images/mAP_sizes_Resnet50_firstRun.png)  
+![mAP_secondRun](./images/mAP_Resnet50_secondRun.png)
+![mAP_sizes_secondRun](./images/mAP_sizes_Resnet50_secondRun.png)  
+
+## Inference Images: ResNet50 Backbone  
+The `visualize_inference_results` function in the Kaagle Notebook uses the saved model to generate the inference images from the trained model, plotting each detected class element in a separate image, for better understanding the results:  
+  
+![Resnet50_label1](./images/test_inference_resnet50_config_second_class_1.png)  
+![Resnet50_label2](./images/test_inference_resnet50_config_second_class_2.png)  
+![Resnet50_label3](./images/test_inference_resnet50_config_second_class_3.png)  
+![Resnet50_label5](./images/test_inference_resnet50_config_second_class_5.png)  
 
 -------------------------------------------------------------------------------------------------------------
 ## Second Configuration: ResNet101
