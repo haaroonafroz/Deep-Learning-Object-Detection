@@ -160,27 +160,27 @@ The configuration files change the following hyper-parameters during the trainin
 The Model is trained using the GPU P100 Accelerator in 2 batches, for 70 Epochs.  
 | Results   |   Epoch: 1/70   |   Epoch: 40/70    |   Epoch: 70/70 |
 |:---------:|:---------------:|:-----------------:|:--------------:|
-|Training Loss| 2.2911 | 0.5665| 0.3994 |
-|mAP|  1.026036479594107e-06 | 0.06002088844494126 | 0.0658 |
-|mAP_50|  5.514755089236659e-06 | 0.1502604897974755 | 0.1557400544118862 |
-|mAP_75|  0.0 | 0.0022192964970503366 | 0.0022192964970503366|
+|Training Loss| 2.2911 | 0.5609| 0.4625 |
+|mAP|  1.026036479594107e-06 | 0.0613 | 0.0647 |
+|mAP_50|  5.514755089236659e-06 | 0.14961941880619364 | 0.15343601082740427 |
+|mAP_75|  0.0 | 0.002423855115542291 | 0.0007736349671833542|
 |mAP_small| 0.0 | 0.0 | 0.0 |
 |mAP_medium| 0.0 | 0.0 | 0.0 |
-|mAP_large| 1.026036479594107e-06 | 0.06002088844494126 | 0.06578527159756851 |
-|Training Time| 3Min 59sec | 3Min 46sec | 04Min 27sec | 
-|Evaluation Time| 52sec | 50sec | 01Min 01sec |  
+|mAP_large| 1.026036479594107e-06 | 0.06126688492058268 | 0.06465336249186769 |
+|Training Time| 3Min 59sec | 3Min 46sec | 03Min 45sec | 
+|Evaluation Time| 52sec | 50sec | 50sec |  
   
 ## Training Loss over Epochs:  
 The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 40-70 epochs.  
 ![Training Loss](./images/training_loss_Resnet50_secondRun.png)
 
-## mAP Metrics Plotting: First Run
+## mAP Metrics Plotting:  
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
 ![mAP_secondRun](./images/mAP_Resnet50_secondRun.png)
 ![mAP_sizes_secondRun](./images/mAP_sizes_Resnet50_secondRun.png)  
 
 ## Inference Images: ResNet50 Backbone  
-The `visualize_inference_results` function in the Kaagle Notebook uses the saved model to generate the inference images from the trained model, plotting each detected class element in a separate image, for better understanding the results:  
+The `visualize_inference_results` function in the Kaggle Notebook uses the saved model to generate the inference images from the trained model, plotting each detected class element in a separate image, for better understanding the results:  
   
 ![Resnet50_label1](./images/test_inference_resnet50_config_second_class_1.png)  
 ![Resnet50_label2](./images/test_inference_resnet50_config_second_class_2.png)  
@@ -188,76 +188,70 @@ The `visualize_inference_results` function in the Kaagle Notebook uses the saved
 ![Resnet50_label5](./images/test_inference_resnet50_config_second_class_5.png)  
 
 -------------------------------------------------------------------------------------------------------------
-## Second Configuration: ResNet101
-#### Version: 3/7
-The Model is run using the GPU P100 Accelerator for 40 Epochs.  
+## FasterRCNN-ResNet101
+#### Version: 3/7 & 7/7
+The Model is trained using the GPU P100 Accelerator in 2 batches, for 70 Epochs.  
+| Results   |   Epoch: 1/70   |   Epoch: 40/70    |   Epoch: 70/70 |
+|:---------:|:---------------:|:-----------------:|:--------------:|
+|Training Loss| 1.7978 | 0.4759| 0.3994 |
+|mAP|  0.0471 | 0.0638 | 0.0658 |
+|mAP_50|  0.11176092292190208 | 0.154462482014483 | 0.1557400544118862 |
+|mAP_75|  0.0191188322210266 | 0.002926961590245225 | 0.004601988416977399|
+|mAP_small| 0.0 | 0.0 | 0.0 |
+|mAP_medium| 0.0 | 0.0 | 0.0 |
+|mAP_large| 0.04710195442291161 | 0.06384850166383267 | 0.06578527159756851 |
+|Training Time| 4Min 55sec | 4Min 34sec | 04Min 27sec | 
+|Evaluation Time| 1Min 02sec | 57sec | 01Min 01sec |  
+  
+## Training Loss over Epochs:  
+The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 40-70 epochs.  
+![Training Loss](./images/training_loss_Resnet101_secondRun.png)  
 
-### 1st Epoch Result:
-Epoch [1/40]: Train Loss: 1.7978, mAP: 0.0471  
-{'mAP': 0.04710195442291161, 'mAP_50': 0.11176092292190208, 'mAP_75': 0.0191188322210266, 'mAP_small': 0.0, 'mAP_medium': 0.0, 'mAP_large': 0.04710195442291161}  
-Time: Training: 4Min 55sec, Evaluation: 1Min 02sec  
-
-### After 40 Epochs:
-Epoch [40/40]: Train Loss: 0.4759, mAP: 0.0638  
-{'mAP': 0.06384850166383267, 'mAP_50': 0.154462482014483, 'mAP_75': 0.002926961590245225, 'mAP_small': 0.0, 'mAP_medium': 0.0, 'mAP_large': 0.06384850166383267}  
-Time: Training: 4Min 34sec, Evaluation: 57sec  
-
-#### Total Version Time: 15775.1 seconds
-
-## Inference Images: Second Configuration
-The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
-
-### Sample Predictions: (Table Elements)
-![inference_119](./images/inference_119_Resnet101_secondRun.png)
-![inference_105](./images/inference_105_Resnet101_secondRun.png)
-![inference_48](./images/inference_48_Resnet101_secondRun.png)
-![inference_59](./images/inference_59_Resnet101_secondRun.png)
-
-
-## Training Loss over Epochs: Second Configuration
-The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 4 epochs.  
-![Training Loss](./images/training_loss_Resnet101_secondRun.png)
-
-## mAP Metrics Plotting: Second Run
+## mAP Metrics Plotting:  
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
-![mAP_secondRun](./images/mAP_Resnet101_secondRun.png)
+![mAP_secondRun](./images/mAP_Resnet101_secondRun.png)  
 ![mAP_sizes_secondRun](./images/mAP_sizes_Resnet101_secondRun.png)  
 
+## Inference Images: ResNet101 Backbone  
+The `visualize_inference_results` function in the Kaggle Notebook uses the saved model to generate the inference images from the trained model, plotting each detected class element in a separate image, for better understanding the results:  
+  
+![Resnet101_label1](./images/test_inference_resnet101_config_second_class_1.png)  
+![Resnet101_label2](./images/test_inference_resnet101_config_second_class_2.png)  
+![Resnet101_label3](./images/test_inference_resnet101_config_second_class_3.png)  
+![Resnet101_label5](./images/test_inference_resnet101_config_second_class_5.png)  
+
 -------------------------------------------------------------------------------------------------------------
-## Third Configuration: MobileNet
-#### Version: 4/7
-The Model is run using the GPU P100 Accelerator for 60 Epochs.    
-### 1st Epoch Result:
-Epoch [1/60]: Train Loss: 1.9932, mAP: 0.0004  
-{'mAP': 0.0003530948519792429, 'mAP_50': 0.0013985628938955675, 'mAP_75': 0.0, 'mAP_small': 0.0, 'mAP_medium': 0.0, 'mAP_large': 0.0003530948519792429}  
-Time: Training: 3Min 02sec, Evaluation: 47sec  
+## FasterRCNN-MobileNet  
+#### Version: 4/7 & 5/7  
+The Model is trained using the GPU P100 Accelerator in 2 batches, for 100 Epochs.  
+| Results   |   Epoch: 1/100   |   Epoch: 60/100    |   Epoch: 100/100 |
+|:---------:|:---------------:|:-----------------:|:--------------:|
+|Training Loss| 1.9932 | 0.5849| 0.4661 |
+|mAP|  0.0004 | 0.0606 | 0.0620 |
+|mAP_50|  0.0013985628938955675 | 0.1496198652336545 | 0.15844851488898923 |
+|mAP_75|  0.0 | 0.004614945663631656 | 0.003841107002266492|
+|mAP_small| 0.0 | 0.0 | 0.0 |
+|mAP_medium| 0.0 | 0.0 | 0.0 |
+|mAP_large| 0.0003530948519792429 | 0.06061333481513215 | 0.061966535692064104 |
+|Training Time| 3Min 02sec | 2Min 51sec | 02Min 46sec |
+|Evaluation Time| 47sec | 45sec | 44sec |  
+  
+## Training Loss over Epochs:  
+The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 60-100 epochs.  
+![Training Loss](./images/training_loss_Mobilenet_secondRun.png)  
 
-### After 60 Epochs:
-Epoch [60/60]: Train Loss:  0.5849, mAP: 0.0606  
-{'mAP': 0.06384850166383267, 'mAP_50': 0.154462482014483, 'mAP_75': 0.002926961590245225, 'mAP_small': 0.0, 'mAP_medium': 0.0, 'mAP_large': 0.06384850166383267}  
-Time: Training: 2Min 51sec, Evaluation: 45sec  
-
-#### Total Version Time: 16193.8 seconds
-
-## Inference Images: Third Configuration
-The `visualize_inference_results` function in utils.py uses the saved model to generate the inference images from the trained model.
-
-### Sample Predictions: (Table Elements)
-![inference_43](./images/inference_43_Mobilenet_thirdRun.png)
-![inference_27](./images/inference_27_Mobilenet_thirdRun.png)
-![inference_101](./images/inference_101_Mobilenet_thirdRun.png)
-![inference_130](./images/inference_130_Mobilenet_thirdRun.png)
-
-
-## Training Loss over Epochs: Third Configuration
-The `plot_metrics` function in utils.py uses the saved results to plot the Training losses over 9 epochs.  
-![Training Loss](./images/training_loss_Mobilenet_thirdRun.png)
-
-## mAP Metrics Plotting: Second Run
+## mAP Metrics Plotting:  
 The `plot_metrics` function also uses the saved results to plot the mAP Metrics along the training process.  
-![mAP_thirdRun](./images/mAP_Mobilenet_thirdRun.png)
-![mAP_sizes_thirdRun](./images/mAP_sizes_Mobilenet_thirdRun.png)  
+![mAP_secondRun](./images/mAP_Mobilenet_secondRun.png)  
+![mAP_sizes_secondRun](./images/mAP_sizes_Mobilenet_secondRun.png)  
 
+## Inference Images: MobileNet Backbone  
+The `visualize_inference_results` function in the Kaggle Notebook uses the saved model to generate the inference images from the trained model, plotting each detected class element in a separate image, for better understanding the results:  
+  
+![Mobilenet_label1](./images/test_inference_mobilenet_config_second_class_1.png)  
+![Mobilenet_label2](./images/test_inference_mobilenet_config_second_class_2.png)  
+![Mobilenet_label3](./images/test_inference_mobilenet_config_second_class_3.png)  
+![Mobilenet_label5](./images/test_inference_mobilenet_config_second_class_5.png)  
 ---------------------------------------------------------------------------------------------------  
 # Interactive Visualization: Using the Notebook as a Pytorch Package
 After the first 3 training runs, the saved models for each respective training runs were used to run one more round of training and evaluation.  
@@ -267,36 +261,15 @@ For these runs, an interactive method for visualizing the inference results was 
 
 # Conclusion
 After training the model with 3 different backbone configurations, the generated JSON file was pushed to `Eval.ai` and the following results were observed on the test dataset:  
-
-1. FasterRCNN Model (ResNet50 Backbone):  
-`First Run`: Version 2/7- 40 Epochs  
-"mAP": 51.321747138025046  
-"mAP IoU=.50": 60.89690064127804  
-"mAP IoU=.75": 56.43127286619124  
-`Second Run`: Version 6/7- 30 Epochs  
-"mAP": 53.030737024040775  
-"mAP IoU=.50": 61.29460891530856  
-"mAP IoU=.75": 58.19626560674476  
-
-3. FasterRCNN Model (ResNet101 Backbone):  
-`First Run`: Version 4/7- 40 Epochs  
-"mAP": 51.16211602905256  
-"mAP IoU=.50": 60.2160120654103  
-"mAP IoU=.75": 56.034203458428856  
-`Second Run`: Version 7/7- 30 Epochs  
-"mAP": 51.16211602905256  
-"mAP IoU=.50": 60.2160120654103  
-"mAP IoU=.75": 56.034203458428856  
-
-4. FaterRCNN Model (MobileNet Backbone):  
-`First Run`: Version 4/7- 60 Epochs  
-"mAP": 51.24333915895759  
-"mAP IoU=.50": 61.62360245036874  
-"mAP IoU=.75": 56.9741775965515  
-`Second Run`: Version 5/7- 30 Epochs  
-"mAP": 55.7283211853313  
-"mAP IoU=.50": 65.0254162650605  
-"mAP IoU=.75": 60.1306060659238  
+### FasterRCNN Object Detection Model With:  
+|  Backbone  |  num_Epochs  |  mAP  |  mAP IoU=.50  |  mAP IoU=.75  |
+|:----------:|:------------:|:-----:|:-------------:|:-------------:|
+| `ResNet50` | 40 | 51.321747138025046 | 60.89690064127804 | 56.43127286619124 |
+| `ResNet50` | 70 | 53.030737024040775 | 61.29460891530856 | 58.19626560674476 |
+| `ResNet101` | 40 | 51.16211602905256 | 60.2160120654103 | 56.034203458428856 |
+| `ResNet101` | 70 | 55.728321185331296 | 65.02541626506049 | 60.130606065923764 |
+| `MobileNet` | 60 | 51.24333915895759 | 61.62360245036874 | 56.9741775965515 |
+| `MobileNet` | 100 | 54.20827276982417 | 63.35519539966543 | 60.183848108301795 |  
   
   
 From the above results, we can observe that the FasterRCNN Model performs the best Object Detection task for detecting Table Elements, when trained with the `ResNet101` backbone for 70 Epochs.  
