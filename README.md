@@ -25,9 +25,12 @@ Using the FasterRCNN object detection model with a ResNet101 backbone offers hig
 Using a MobileNet backbone with FasterRCNN provides a lightweight and efficient model, ideal for real-time applications and deployment on devices with limited computational resources, while still maintaining reasonable accuracy.  
 ### Pretrained Weights
 For this project, the following weights were used for each backbone configuration:  
-- Resnet50: FasterRCNN_ResNet50_FPN_Weights.DEFAULT  
-- Resnet101: FasterRCNN_ResNet50_FPN_Weights.DEFAULT
-- MobileNet: FasterRCNN_MobileNet_V3_Large_FPN_Weights.DEFAULT
+  
+|    Backbone    |    Default Weights                                  |
+|:--------------:|:---------------------------------------------------:|
+|   Resnet50     |  FasterRCNN_ResNet50_FPN_Weights.DEFAULT            |
+|   Resnet101    |  FasterRCNN_ResNet50_FPN_Weights.DEFAULT            |
+|   MobileNet    |  FasterRCNN_MobileNet_V3_Large_FPN_Weights.DEFAULT  |
 
 ## Configuration Parameters
 #### The .yaml files contained in the `./configs` folder defines the hyper-parameters used to run the training Model on different Model Hyper-parameters:
