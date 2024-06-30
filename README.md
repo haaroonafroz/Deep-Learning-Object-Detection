@@ -49,7 +49,7 @@ The Repository content is imported using the 'os' and 'shutil' libraries by copy
 ### Step 3: Create a Config file:
 Using the 'create_config' function from `utils.py`,  a configuration file (of type .yaml) is generated and placed in the working directory of the Notebook. This Configuration file can be used to run the Training and Evaluation function by setting it as the 'config_file_path' when running the `train.py` file.  
 ![Create Config](./images/create_config_kaggle1.png)  
-![Create Config](./images/create_config_kaggle1.png)  
+![Create Config](./images/create_config_kaggle2.png)  
 
 ### Step 4: Training and Evaluation:
 The `train.py` main file is run by following these steps:
